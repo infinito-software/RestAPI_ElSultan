@@ -333,7 +333,7 @@ router.get('/AutenticarUsuario', jwtMW, async (req, res, next) => {
             }
             else {
                 res.send(JSON.stringify({ success: false, message: "Empty" }));
-            }pa_
+            }
         }
         catch (err) {
             res.status(500) //Internal Server Error
