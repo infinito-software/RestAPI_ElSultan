@@ -1941,6 +1941,8 @@ router.post('/Pa_AEE_FormaPago_Salidas', jwtMW, async (req, res, next) => {
     else
         IdAlquiler = req.body.IdAlquiler;
 
+    var FechaRegistro = req.body.FechaRegistro;
+
     var Opcion = req.body.Opcion;
 
     try {
@@ -1951,6 +1953,7 @@ router.post('/Pa_AEE_FormaPago_Salidas', jwtMW, async (req, res, next) => {
             .input('IdValeConsumo', sql.Int, IdValeConsumo)
             .input('Monto', sql.Decimal, Monto)
             .input('IdAlquiler', sql.Int, IdAlquiler)
+            .input('FechaRegistro', sql.Date, FechaRegistro)
             .input('Opcion', sql.Int, Opcion)
             .output('Rpta')
             .execute('Pa_AEE_FormaPago_Salidas')
@@ -2010,7 +2013,11 @@ router.post('/Pa_AEE_DetSalida', jwtMW, async (req, res, next) => {
     var CantOtraUnd = req.body.CantOtraUnd;
 
     var DescripcionAdicional = req.body.DescripcionAdicional;
-    var IDAlquiler_Producto = req.body.IDAlquiler_Producto;
+
+    if (req.body.IDAlquiler_Producto == 0)
+        IDAlquiler_Producto = null;
+    else
+        IDAlquiler_Producto = req.body.IDAlquiler_Producto;
 
     var Opcion = req.body.Opcion;
 
