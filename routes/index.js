@@ -1078,6 +1078,7 @@ router.post('/Pa_AEE_DetPedido', jwtMW, async (req, res, next) => {
     var HoraInicioPreparacion = req.body.HoraInicioPreparacion;
     var HoraFinPreparacion = req.body.HoraFinPreparacion;
     var IdAlquiler = req.body.IdAlquiler;
+    var IdsInsumosExtras = req.body.IdsInsumosExtras;
     var opcion = req.body.opcion;
 
     try {
@@ -1097,6 +1098,7 @@ router.post('/Pa_AEE_DetPedido', jwtMW, async (req, res, next) => {
             .input('HoraInicioPreparacion', sql.DateTime, new Date(HoraInicioPreparacion))
             .input('HoraFinPreparacion', sql.DateTime, new Date(HoraFinPreparacion))
             .input('IdAlquiler', sql.Int, IdAlquiler)
+            .input('IdInsumosExtras', sql.NVarChar, IdsInsumosExtras)
             .input('Opcion', sql.Int, opcion)
             .output('Rpta')
             .execute('Pa_AEE_DetPedido')
