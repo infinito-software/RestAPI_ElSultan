@@ -1894,6 +1894,7 @@ router.post('/Pa_AEE_Salida', jwtMW, async (req, res, next) => {
             .input('CodigoEstadoCDR', sql.NVarChar, CodigoCDR)
             .input('DireccionEntrega', sql.NVarChar, DireccionEntrega)
             .input('CelularEntrega', sql.NVarChar, CelularEntrega)
+            .input('IdSalon', sql.Int, IdSalon)
             .input('Opcion', sql.Int, Opcion)
             .output('Rpta')
             .execute('Pa_AEE_Salida')
