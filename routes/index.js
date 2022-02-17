@@ -252,6 +252,7 @@ router.put('/Pa_AEE_SerieCorrelativo', jwtMW, async (req, res, next) => {
             .input('IdAlmacen', sql.Int, IdAlmacen)
             .input('IdCompPago', sql.Int, IdTipCompPago)
             .input('ModeloCPE', sql.VarChar, ModeloCPE)
+            .input('IdCaja', sql.Int, 0)
             .input('Opcion', sql.Int, opcion)
             .output('Rpta')
             .execute('Pa_AEE_SerieCorrelativo')
@@ -1922,6 +1923,7 @@ router.post('/Pa_AEE_Salida', jwtMW, async (req, res, next) => {
 
 router.post('/Pa_AEE_FormaPago_Salidas', jwtMW, async (req, res, next) => {
 
+    var IdFormaPago_Salidas = req.body.IdFormaPago_Salidas;
     var IdSalida = req.body.IdSalida;
     var IdFormaPago = req.body.IdFormaPago;
     var IdValeConsumo;
@@ -1948,6 +1950,7 @@ router.post('/Pa_AEE_FormaPago_Salidas', jwtMW, async (req, res, next) => {
     try {
         const pool = await poolPromise
         const queryResult = await pool.request()
+            .input('IdFormaPago_Salidas', sql.Int, IdFormaPago_Salidas)
             .input('IdSalida', sql.Int, IdSalida)
             .input('IdFormaPago', sql.Int, IdFormaPago)
             .input('IdValeConsumo', sql.Int, IdValeConsumo)
